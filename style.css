@@ -290,10 +290,40 @@ nav {
 
 .project-img{
   width: 100%; /*para que tenga el tamano completo del wrapper*/
+  transition: all 500ms ease;
 }
 
 .project-wrapper{
+  display: flex;
   width: 600px;
-  height: 600px;
   margin: 0 auto;/*para que se centre la imagen*/
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;/*para que el absolute funcione con el papa*/ 
+}
+
+.project-wrapper:before{/*carga antes que lo que este en el elemento como tal*/
+  content: "";
+  position: absolute;/*para que ignore que la imagen existe y que el efecto pase encima*/
+  top: 0;
+  left: 0;/*para que quede en el wrapper*/
+  height: 100%;
+  width: 100%;/*tamano del wrapper*/
+  background-color: #1c1d25;
+  opacity: 0;
+  transition: opacity 450ms ease;
+  z-index: 2;
+}
+
+.project:hover .project-wrapper:before {
+  opacity: 0.7;
+}
+
+.project:hover .project-img {
+  transform: scale(1.07);/*7% bigger */;
+}
+
+.project-list {
+  padding-top: 20px;
 }
