@@ -51,6 +51,23 @@ a {
   left: 0;
 }
 
+.wave {
+  display: inline-block; /*span por default tiene display: inline que no permite rotar*/
+  animation: animate-wave 500ms infinite ease-in-out; /*el ease-in-out lo hace un poco mas smooth*/
+}
+
+@keyframes animate-wave {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
 .link-hover-effect-white:after{
   background-color: white;
 }
@@ -128,6 +145,7 @@ li {
   /*odd numbers*/
   background: #f5f5f5;
   width: 100%;
+  padding: 0 12px;
   max-width: 800px;
   margin: 0 auto;
   /**box-shadow: 5px 5px 5px 10px #d0d0d0;**/
@@ -144,6 +162,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 12px;
 }
 
 .nav-link-list {
@@ -223,6 +242,19 @@ nav {
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /*8px de la sombra y 16 de dilusion*/
   margin: 28px 0;
+  animation: animate-profile-picture 800ms /*lo que dura*/ 200ms /*delay*/ backwards /*para que empiece en 0%*/;
+} 
+
+@keyframes animate-profile-picture {
+  0% {
+    transform: scale(0); /*invisible*/
+  }
+  80% {
+    transform: scale(1.1); /*para un efecto de agrandamiento*/
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .about-me-picture {
@@ -232,14 +264,28 @@ nav {
 .about-me-paragraph {
   font-size: 20px; /*poco mas pequeno que las letras del navbar*/
   margin-bottom: 16px;
+  animation: fade-up 650ms 600ms backwards;
 }
 
 .about-me-title {
   margin-bottom: 16px;
+  animation: fade-up 650ms 400ms backwards;
 }
 
 .about-me-links {
   display: flex;
+  animation: fade-up 650ms 800ms backwards;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .about-me-link {
@@ -253,9 +299,20 @@ nav {
   display: flex;
   flex: 1; /* para estirar el container o el figure lo que queda de la pagina*/
   align-items: center;
+  animation: fade-in 1200ms 1000ms backwards;
 }
 .about-me-img {
   width: 100%; /*para que no se salga de la figure*/
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 /* LANGUAGES */
@@ -283,6 +340,7 @@ nav {
 .language-list {
   display: flex;
   width: 100%;
+  justify-content: center;
   flex-wrap: wrap; /*para que no esten todas en la misma linea*/
 }
 
@@ -351,6 +409,7 @@ nav {
 
 .project{
   padding: 50px 0;
+  display: flex; /*Para que se hagan pequenos al cambiar resolucion si no se quedan del mismo tamano*/
 }
 
 .project-description{
@@ -442,7 +501,63 @@ footer {
 
 /*Small phones, tablets, large smartphones*/
 @media (max-width: 768px){
+  nav{
+    height: 68px;
+  }
 
+  h1 {
+    font-size: 28px;
+  }
+
+  .about-me-paragraph{
+    font-size: 18px;
+  }
+
+  .language{
+    width: calc(100% / 3); /*para que queden 3 de cada lado en vez de 4*/
+  }
+
+  .project-paragraph{
+    font-size: 14px;
+  }
+
+  .project-description{
+    left: 30px; /*para que no quede tan a la derecha*/
+    padding-right: 30px;
+  }
+}
+
+/*smaller phones*/
+@media (max-width: 480px){
+  .nav-link:not(:last-child){
+    display: none;
+  }
+
+  .project-description{
+    padding: 0;
+    left: 0; /*centralo con position absolute*/
+    width: 100%;
+  }
+
+  .project-paragraph{
+    display: none;
+  }
+
+  .project-links{
+    display: flex;
+    justify-content: center;
+  }
+
+  .project-title{
+    font-size: 32px;
+    line-height: 1; /*para que no tenga extra espacio*/
+    text-align: center;
+  }
+
+  .project-subtitle{
+    text-align: center;
+    margin: 12px 0;
+  } /*Cualquier cosa en menos de 300px no vale la pena hacer, ya que casi no existe*/
 }
 
 
