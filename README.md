@@ -1,6 +1,6 @@
 # E-Portfolio
 
-Sample E-Portfolio (In Progress) using HTML5 and CSS3
+Sample E-Portfolio using HTML5 and CSS3
 
 https://guayabass.github.io/E-Portfolio/
 
